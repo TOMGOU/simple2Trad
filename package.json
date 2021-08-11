@@ -1,0 +1,22 @@
+{
+  "name": "simple2trad",
+  "version": "1.0.3",
+  "description": "webpack plugin translate simple to trad",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TOMGOU/simple2Trad"
+  },
+  "keywords": [
+    "繁体"
+  ],
+  "author": "tomgou",
+  "license": "ISC",
+  "dependencies": {
+    "cnchar": "^3.0.3",
+    "cnchar-trad": "^3.0.3"
+  }
+}
