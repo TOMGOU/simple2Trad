@@ -13,19 +13,23 @@ module.exports = class SimpleToTrad {
   apply(compiler) {
     compiler.hooks.emit.tap('simpleToTrad', compilation => {
       const assets = compilation.getAssets();
-      console.log({assets})
       for (const file of assets) {
         if (/\.js$/.test(file.name)) {
           const { source } = compilation.getAsset(file.name)
-
-          const newFile = cnchar.convert.simpleToTrad(source.source())
+          
+          let newSource = ''
+          newSource = cnchar.convert.simpleToTrad(source.source())
+          const optionKeys = Object.keys(this.option)
+          optionKeys.length && optionKeys.forEach(key => {
+            newSource = newSource.replace(new RegExp(key, 'g'), this.option[key])
+          })
 
           compilation.assets[file.name] = {
             source: function () {
-              return newFile;
+              return newSource;
             },
             size: function () {
-              return newFile.length
+              return newSource.length
             }
           }
         }
